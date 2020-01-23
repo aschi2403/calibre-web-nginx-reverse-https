@@ -1,0 +1,8 @@
+[2020-01-23 15:11:42,089] {/app/calibre-web/cps/web.py:188} INFO - Starting Calibre Web...
+[2020-01-23 15:11:42,098] {/app/calibre-web/cps/comic.py:32} WARNING - cannot import comicapi, extracting comic metadata will not work: No module named parse
+[2020-01-23 15:11:42,404] {/app/calibre-web/cps/server.py:84} INFO - Starting Gevent server
+[2020-01-23 15:13:46,224] {/app/calibre-web/cps/server.py:130} INFO - Performing shutdown of Calibre-Web
+[2020-01-23 15:14:45,002] {/app/calibre-web/cps/web.py:188} INFO - Starting Calibre Web...
+[2020-01-23 15:14:45,012] {/app/calibre-web/cps/comic.py:32} WARNING - cannot import comicapi, extracting comic metadata will not work: No module named parse
+[2020-01-23 15:14:45,320] {/app/calibre-web/cps/server.py:84} INFO - Starting Gevent server
+[2020-01-23 15:16:37,705] {/app/calibre-web/cps/server.py:130} INFO - Performing shutdown of Calibre-Web

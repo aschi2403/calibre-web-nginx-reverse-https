@@ -1,0 +1,42 @@
+---
+version: "2"
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports: 
+      - 80:80
+      - 443:443
+    volumes: 
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  letsencrypt-nginx-proxy-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: letsencrypt-nginx-proxy-companion
+    volumes_from:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment: 
+      - DEFAULT_EMAIL=test@domain.com
+    
+  calibre-web:
+      image: linuxserver/calibre-web
+      container_name: calibre-web-template
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Vienna
+        - DOCKER_MODS=linuxserver/calibre-web:calibre
+        - VIRTUAL_HOST=template.hostname
+        - LETSENCRYPT_HOST=template.hostname
+        - VIRTUAL_PORT=8083
+      volumes:
+        - ./config:/config
+        - ./books:/books
+      ports:
+        - 8083:8083
+      restart: unless-stopped
